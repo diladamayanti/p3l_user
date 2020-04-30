@@ -5,12 +5,12 @@
       :items-per-page.sync="itemsPerPage"
       :page="page"
       :search="search"
-      :sort-by="sortBy.toLowerCase()"
+      :sort-by="sortBy"
       :sort-desc="sortDesc"
       hide-default-footer
     >
       <template v-slot:header>
-        <v-toolbar dark color="blue darken-3" class="mb-1">
+        <v-toolbar dark color="blue-grey darken-3" class="mb-1">
           <v-text-field
             v-model="search"
             clearable
@@ -28,15 +28,16 @@
               solo-inverted
               hide-details
               :items="keys"
+              clearable
               prepend-inner-icon="mdi-sort"
               label="Sort by"
             ></v-select>
             <v-spacer></v-spacer>
             <v-btn-toggle v-model="sortDesc" mandatory>
-              <v-btn large depressed color="blue" :value="false">
+              <v-btn large depressed color="grey" :value="false">
                 <v-icon>mdi-arrow-up</v-icon>
               </v-btn>
-              <v-btn large depressed color="blue" :value="true">
+              <v-btn large depressed color="grey" :value="true">
                 <v-icon>mdi-arrow-down</v-icon>
               </v-btn>
             </v-btn-toggle>
@@ -91,38 +92,16 @@
           <v-spacer></v-spacer>
 
           <span class="mr-4 grey--text">Page {{ page }} of {{ numberOfPages }}</span>
-          <v-btn fab dark color="blue darken-3" class="mr-1" @click="formerPage">
+          <v-btn fab dark color="blue-grey darken-3" class="mr-1" @click="formerPage">
             <v-icon>mdi-chevron-left</v-icon>
           </v-btn>
-          <v-btn fab dark color="blue darken-3" class="ml-1" @click="nextPage">
+          <v-btn fab dark color="blue-grey darken-3" class="ml-1" @click="nextPage">
             <v-icon>mdi-chevron-right</v-icon>
           </v-btn>
         </v-row>
       </template>
     </v-data-iterator>
   </v-container>
-
-  <!-- <div>
-    <h2 class="text-center">Produk</h2>
-
-    <v-container fluid>
-      <v-row>
-        <v-col v-for="(item, i) in produks" :key="i" cols="3" class="mx-auto">
-          <v-card class="mx-auto my-12" max-width="374" outlined>
-            <v-img height="250" :src="$apiUrl + 'produk/' + item.idProduk + '/gambar'"></v-img>
-
-            <v-card-title>{{item.namaProduk}}</v-card-title>
-
-            <v-card-text>
-              <div class="my-3 subtitle-1">ID Produk: {{item.idProduk}}</div>
-              <div class="my-3 subtitle-1">Harga Produk: {{ item.harga }}</div>
-              <div class="my-3 subtitle-1">Stok Produk: {{ item.stok }}</div>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>-->
 </template>
     
 
